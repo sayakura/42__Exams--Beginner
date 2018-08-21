@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/20 18:48:26 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/20 18:54:30 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/21 13:18:46 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@ void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
-	char digit = '0';
+	char	digit;
+
+	digit = '0';
 	while (digit <= '9')
 	{
 		ft_putchar(digit);
