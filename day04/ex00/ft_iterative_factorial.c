@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 18:44:24 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/21 16:15:28 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/22 00:10:37 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/22 00:11:33 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_print_reverse_alphabet(void)
+int	ft_iterative_factorial(int nb)
 {
-	char	letter;
+	int num;
+	int i;
 
-	letter = 'z';
-	while (letter >= 'a')
-	{
-		ft_putchar(letter);
-		letter--;
-	}
+	if (nb == 0 || nb == 1)
+		return (1);
+	if (nb < 0 || nb > 12)
+		return (0);
+	num = 1;
+	i = 1;
+	while (--nb)
+		num *= ++i;
+	return (num);
 }

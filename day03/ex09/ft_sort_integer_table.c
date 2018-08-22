@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 20:20:25 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/21 21:08:33 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/21 23:03:34 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_sort_integer_table(int *tab, int size)
 	while (i < size - 1)
 	{
 		j = i;
-		while (j < size - 1)
+		while (j <= size - 1)
 		{
 			if (compare(tab[i], tab[j]))
 				swap(tab, i, j);

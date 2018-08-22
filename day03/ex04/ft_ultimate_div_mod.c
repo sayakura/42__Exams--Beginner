@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 16:40:47 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/21 21:16:03 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/21 21:22:51 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@ void	ft_ultimate_div_mod(int *a, int *b)
 	int	div;
 	int	mod;
 
-	div = a / b;
-	mod = a % b;
+	div = *a / *b;
+	mod = *a % *b;
 	*a = div;
 	*b = mod;
 }

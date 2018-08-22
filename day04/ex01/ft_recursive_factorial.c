@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/20 18:44:24 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/21 16:15:28 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/21 23:23:55 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/21 23:36:38 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_print_reverse_alphabet(void)
+int	ft_recursive_factorial(int nb)
 {
-	char	letter;
-
-	letter = 'z';
-	while (letter >= 'a')
-	{
-		ft_putchar(letter);
-		letter--;
-	}
+	if (nb < 0 || nb > 12)
+		return (0);
+	if(nb > 1)
+		return nb * ft_recursive_factorial(nb - 1);
+	return (1);
 }
