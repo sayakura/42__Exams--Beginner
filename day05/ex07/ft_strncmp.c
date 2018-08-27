@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/21 23:23:55 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/22 17:10:10 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/24 04:32:36 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/24 04:33:19 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb == 0)
-		return (1);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb - 1));
-	return (nb);
+	while (n--)
+	{
+		if (*s1 != *s2)
+			if (*(unsigned char *)s1 < *(unsigned char *)s2)
+				return (-1);
+			else
+				return (1);
+		else if (*s1 == '\0')
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/21 23:23:55 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/22 17:10:10 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/24 00:06:46 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/24 16:33:54 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+int	is_space(char c)
 {
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb == 0)
+	if (c == '\f'
+	|| c == '\v'
+	|| c == '\n'
+	|| c == '\f'
+	|| c == '\r')
 		return (1);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb - 1));
-	return (nb);
+	return (0);
+}
+
+int	ft_atoi(char *str)
+{
+	int sign;
+	int num;
+
+	sign = 1;
+	num = 0;
+	while (is_space(*str))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+		num = num * 10 + (unsigned int)(*str++ - '0');
+	return (sign * num);
 }
