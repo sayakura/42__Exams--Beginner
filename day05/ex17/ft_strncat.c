@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 15:30:31 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/26 20:08:46 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/27 19:08:09 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*strncat(char *dest, char *src, int nb)
 	while (nb--)
 	{
 		if (!*str)
-			break;
+			break ;
 		*ptr++ = *src++;
 	}
 	*ptr == '\0';

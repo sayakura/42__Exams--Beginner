@@ -6,23 +6,21 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 04:32:36 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 04:33:19 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/27 02:35:46 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	while (n--)
+	while (*s1 != '\0' && n > 0)
 	{
 		if (*s1 != *s2)
-			if (*(unsigned char *)s1 < *(unsigned char *)s2)
-				return (-1);
-			else
-				return (1);
-		else if (*s1 == '\0')
-			return (0);
+			return (*s1 - *s2);
 		s1++;
 		s2++;
+		--n;
 	}
+	if (*s2 != '\0' && n > 0)
+		return (*s1 - *s2);
 	return (0);
 }

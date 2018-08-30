@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 23:35:56 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/23 23:37:05 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/28 01:34:26 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@ void	ft_putchar(char c);
 
 void	ft_putstr(char *str)
 {
-	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
+	int i;
+
+	i = 0;
+	while (str[i])
+		ft_putchar(str[i++]);
 }

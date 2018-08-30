@@ -6,17 +6,16 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 04:05:55 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 15:36:48 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/28 02:17:05 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	char	*ptr;
+	int		i;
 
-	if ((ptr = dest) == 0)
-		return (char *)(0);
-	while ((*ptr++ = *src++))
-		;
+	i = 0;
+	while ((dest[i] = src[i]) != '\0')
+		i++;
 	return (dest);
 }

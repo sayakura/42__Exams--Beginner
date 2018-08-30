@@ -6,22 +6,20 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 03:27:26 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 16:35:08 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/27 01:51:48 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 == *s2++)
+	while (*s1 != '\0')
 	{
-		if (*s1 == '\0')
-			return (0);
+		if (*s1 != *s2)
+			return (*s1 - *s2);
 		s1++;
+		s2++;
 	}
-	if (*s1 == *s2)
-		return (0);
-	else if (*(unsigned char *)s1 > *(unsigned char *)s2)
-		return (1);
-	else
-		return (-1);
+	if (*s2 != '\0')
+		return (*s1 - *s2);
+	return (0);
 }

@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/24 20:11:38 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/26 05:05:10 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/27 18:58:28 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/27 19:05:45 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
+#include <stdio.h>
+
+int		is_space(char c)
 {
 	if (c == ' '
 	|| c == '\f'
@@ -22,44 +24,91 @@ int	is_space(char c)
 	return (0);
 }
 
-int	is_valid(char c, int base)
+int		check_base(char *base)
 {
-	char	*digits;
-	char	*digits2;
+	int size;
+	int i;
 
-	digits = "0123456789abcdef";
-	digits2 = "0123456789ABCDEF";
-	while (base--)
-		if (digits[base] == c || digits2[base] == c)
-			return (1);
-	return (0);
+	size = 0;
+	i = 0;
+	while (base[size] != 0)
+	{
+		if (base[size] == '+' || base[size] == '-')
+			return (-1);
+		i = 0;
+		while (base[i] != 0)
+			if (base[i] == base[size] && i != size)
+				return (-1);
+			else
+				i++;
+		size++;
+	}
+	if (size < 2)
+		return (-1);
+	return (size);
 }
 
-int	convert(char c)
+int		is_valid(char c, char *base, int size)
 {
-	if (c >= '0' && c <= '9')
-		return (c - '0');
-	else if (c >= 'a' && c <= 'f')
-		return (c - 'a' + 10);
-	else if (c >= 'A' && c <= 'F')
-		return (c - 'A' + 10);
-	return (0);
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (c == base[i])
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-int	ft_atoi_base(const char *str, int str_base)
+int		get_value(char *arr, int size, char *base, int base_size)
 {
+	int power;
+	int num;
 	int result;
-	int sign;
+	int i;
+	int j;
 
 	result = 0;
+	num = 0;
+	power = size;
+	i = 0;
+	while (i < size)
+	{
+		num = is_valid(arr[i], base, base_size);
+		j = size - i;
+		while (--j)
+			num *= base_size;
+		result += num;
+		power++;
+		i++;
+	}
+	return (result);
+}
+
+int		ft_atoi_base(const char *str, char *base)
+{
+	int		sign;
+	int		str_len;
+	int		i;
+	char	arr[1024];
+	int		base_size;
+
 	sign = 1;
-	while (is_space(*str))
-		str++;
-	if (*str == '-')
+	str_len = 0;
+	i = 0;
+	base_size = check_base(base);
+	if (base_size < 0)
+		return (0);
+	while (is_space(str[i]))
+		i++;
+	if (str[i] == '-')
 		sign = -1;
-	if (*str == '-' || *str == '+')
-		str++;
-	while (is_valid(*str, str_base))
-		result = result * 10 + convert(*str++);
-	return (result * sign);
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (is_valid(str[i], base, base_size) >= 0)
+		arr[str_len++] = str[i++];
+	arr[str_len] = '\0';
+	return (sign * get_value(arr, str_len, base, base_size));
 }

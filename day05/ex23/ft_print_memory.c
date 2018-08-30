@@ -5,96 +5,97 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/25 03:44:59 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/26 05:06:58 by kpeng            ###   ########.fr       */
+/*   Created: 2018/08/28 03:18:52 by kpeng             #+#    #+#             */
+/*   Updated: 2018/08/28 04:11:03 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+static const char	*g_hexbase = "0123456789abcdef";
 
-void	ft_putchar(char c)
+static const char	*g_hex_upp = "0123456789ABCDEF";
+
+void	ft_putchar(char c);
+
+int		ft_putnbrhex(unsigned long long nb, unsigned int len, int maj)
 {
-	write(1, &c, 1);
-}
+	char	nb_act;
+	int		size;
 
-void	print_hex(char c)
-{
-	if ((c >> 4) > 9)
-		ft_putchar((c >> 4) - 10 + 'a');
-	else
-		ft_putchar((c >> 4) + '0');
-	if ((c & 0xf) > 9)
-		ft_putchar((c & 0xf) - 10 + 'a');
-	else
-		ft_putchar((c & 0xf) + '0');
-}
-
-void	print_addr(unsigned int bits_of_int)
-{
-	print_hex((bits_of_int >> 24) & 0xff);
-	print_hex((bits_of_int >> 16) & 0xff);
-	print_hex((bits_of_int >> 8) & 0xff);
-	print_hex(bits_of_int & 0xff);
-	ft_putchar(':');
-	ft_putchar(' ');
-}
-
-void	print_content(char *addr, unsigned size)
-{
-	int i;
-
-	i = 0;
-	while (i < 16)
+	nb_act = nb % 16;
+	size = 1;
+	if (nb >= 16)
+		size += ft_putnbrhex(nb / 16, len > 0 ? len - 1 : 0, maj);
+	else if (len > 0)
 	{
-		if (i >= size)
-		{
+		size += len - 1;
+		while (--len > 0)
+			ft_putchar('0');
+	}
+	if (maj)
+		ft_putchar(g_hex_upp[(int)nb_act]);
+	else
+		ft_putchar(g_hexbase[(int)nb_act]);
+	return (size);
+}
+
+void	ft_fill(int count, int space)
+{
+	while (count < 16)
+	{
+		ft_putchar(' ');
+		ft_putchar(' ');
+		if (space && count % space == space - 1)
 			ft_putchar(' ');
-			ft_putchar(' ');
-		}
-		else
-			print_hex(addr[i]);
-		if (i % 2 == 1)
-		{
-			ft_putchar(' ');
-		}
-		i++;
+		++count;
 	}
 }
 
-void	print_text(char *addr, unsigned int size)
+void	ft_putnstr(char *str, unsigned int len, int hex, int space)
 {
-	int i;
+	unsigned int	i;
 
 	i = 0;
-	while (i < 16 && i < size)
+	while (len > i)
 	{
-		if (addr[i] >= ' ' && addr[i] <= '~')
-			ft_putchar(addr[i]);
+		if (hex)
+		{
+			ft_putchar(g_hexbase[(int)((unsigned char)str[i] / 16)]);
+			ft_putchar(g_hexbase[(int)((unsigned char)str[i] % 16)]);
+		}
+		else if (str[i] < 127 && str[i] >= 31)
+			ft_putchar(str[i]);
 		else
 			ft_putchar('.');
-		i++;
+		if (space && (int)i % space == space - 1)
+			ft_putchar(' ');
+		++i;
 	}
+	if (hex)
+		ft_fill(i, space);
+}
+
+void	ft_putline(char *addr, unsigned int offset, unsigned int size)
+{
+	ft_putnbrhex(offset, 8, 0);
+	ft_putchar(':');
+	ft_putchar(' ');
+	ft_putnstr(addr + offset, size, 1, 2);
+	ft_putchar(' ');
+	ft_putnstr(addr + offset, size, 0, 0);
+	ft_putchar('\n');
 }
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	unsigned int offset;
+	unsigned int		count;
 
-	offset = 0;
-	while (offset < size)
+	count = 0;
+	while (size - 16 > count && size - 16 > 0)
 	{
-		print_addr(offset);
-		print_content((char*)addr + offset, size - offset);
-		print_text((char*)addr + offset, size - offset);
-		offset += 16;
-		ft_putchar('\n');
+		ft_putline(addr, count, 16);
+		count += 16;
 	}
+	if (size - count > 0)
+		ft_putline(addr, count, size - count);
 	return (addr);
-}
-
-int 	main(void)
-{
-	char test[] = "asdf\nthis is a test string which is pretty awesome!!!";
-	ft_print_memory(test, 0x4f);
-	return (0);
 }

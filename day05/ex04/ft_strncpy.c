@@ -6,18 +6,26 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 04:22:46 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 16:39:27 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/28 02:19:47 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	char *ptr;
+	int i;
 
-	if ((ptr = dest) == 0)
-		return (char *)(0);
-	while (n-- && (*ptr++ = *src++) != 0)
-		;
-	*ptr = '\0';
+	i = 0;
+	while (src[i] != '\0' && n > 0)
+	{
+		dest[i] = src[i];
+		i++;
+		n--;
+	}
+	while (n > 0)
+	{
+		dest[i] = '\0';
+		i++;
+		n--;
+	}
 	return (dest);
 }

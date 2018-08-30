@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/23 23:38:28 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 16:37:47 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/27 05:08:33 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_putnbr(int nb)
 	else if (nb > 9)
 	{
 		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putchar(nb % 10 + '0');
 	}
 	else
 		ft_putchar(nb % 10 + '0');

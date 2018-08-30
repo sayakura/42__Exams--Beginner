@@ -6,40 +6,32 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 11:53:36 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 12:16:56 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/27 03:00:38 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		is_letter(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	if (c >= 'A' && c <= 'Z')
-		return (2);
-	return (0);
-}
-
 char	*ft_strcapitalize(char *str)
 {
-	int		in_word;
-	int		*ptr;
+	int i;
 
-	ptr = str;
-	in_word = 0;
-	while (*str)
+	if (str[0] >= 'a' && str[0] <= 'z')
+		str[0] -= 32;
+	i = 1;
+	while (str[i] != '\0')
 	{
-		if (is_letter(*str) == 1 && in_word == 0)
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			*str -= 32;
-			in_word = 1;
+			if ((str[i - 1] > 'z'
+				|| str[i - 1] < 'A'
+				|| (str[i - 1] > 'Z'
+				&& str[i - 1] < 'a'))
+				&& !(str[i - 1] >= '0'
+				&& str[i - 1] <= '9'))
+				str[i] -= 32;
 		}
-		else if (*str >= '0' && *str <= '9')
-			in_word = 1;
-		else if (is_letter(*str) == 2 && in_word == 1)
-			*str += 32;
-		else if (is_letter(*str) == 0)
-			in_word = 0;
-		str++;
+		i++;
 	}
-	return (ptr);
+	return (str);
 }

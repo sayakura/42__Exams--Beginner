@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 11:49:37 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 11:50:38 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/26 22:39:51 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@ char	*ft_strlowcase(char *str)
 	int i;
 
 	i = 0;
-	while (str[i])
-		str[i++] += 32;
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] = str[i] + 32;
+		i++;
+	}
 	return (str);
 }

@@ -6,15 +6,16 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/24 13:27:42 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/24 14:47:26 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/26 23:42:12 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_str_is_printable(char *str)
 {
-	str--;
-	while (*++str)
-		if (c < ' ' && c > '~')
+	while (*str != 0)
+		if (*str >= ' ' && *str <= '~')
+			str++;
+		else
 			return (0);
 	return (1);
 }
