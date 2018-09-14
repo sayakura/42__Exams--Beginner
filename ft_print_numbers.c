@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/14 00:44:41 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/14 00:50:39 by qpeng            ###   ########.fr       */
+/*   Created: 2018/08/31 18:06:06 by exam              #+#    #+#             */
+/*   Updated: 2018/08/31 18:06:56 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
+#include <unistd.h>
+void	ft_print_numbers(void)
 {
-	unsigned int num;
+	write(1, "0123456789",10);
 
-	num = 2;
-	if (n <= 0)
-		return (0);
-	if (n == 1)
-		return (1);
-	while (num <= n)
-	{
-		if (num == n)
-			return (1);
-		num *= 2;
-	}
-	return (0);
 }

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_power_of_2.c                                    :+:      :+:    :+:   */
+/*   aff_first_param.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/14 00:44:41 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/14 00:50:39 by qpeng            ###   ########.fr       */
+/*   Created: 2018/09/14 03:07:02 by qpeng             #+#    #+#             */
+/*   Updated: 2018/09/14 03:08:07 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	    is_power_of_2(unsigned int n)
-{
-	unsigned int num;
+#include <unistd.h>
 
-	num = 2;
-	if (n <= 0)
-		return (0);
-	if (n == 1)
-		return (1);
-	while (num <= n)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	main(int ac, char **av)
+{
+	if (ac < 2)
 	{
-		if (num == n)
-			return (1);
-		num *= 2;
+		ft_putchar('\n');
+		return (0);
+	}
+	else
+	{
+		while (*av[1])
+		{
+			ft_putchar(*av[1]);
+			(av[1])++;
+		}
+		ft_putchar('\n');
 	}
 	return (0);
 }
