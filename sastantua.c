@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/26 03:52:45 by kpeng             #+#    #+#             */
-/*   Updated: 2018/08/26 04:01:14 by kpeng            ###   ########.fr       */
+/*   Updated: 2018/08/26 19:32:15 by kpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	is_door(int f_level, int size, int i, int length)
 	&& i <= (length / 2) + (door_size / 2))))
 		if (f_level == (door_size / 2)
 			&& i == (length / 2) + (door_size / 2) - 1
-			&& size > 3)
+			&& size > 4)
 			print(1, '$');
 		else
 			print(1, '|');
@@ -81,8 +81,9 @@ void	sastantua(int size)
 	int max_width;
 
 	f_level = 1;
-	max_width = cal_base(size);
-	while (f_level <= size)
+	if (size > 0)
+		max_width = cal_base(size);
+	while (f_level <= size && size > 0)
 	{
 		floor_width = cal_base(f_level);
 		current_width = floor_width - (f_level + 1) * 2;
