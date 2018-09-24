@@ -14,14 +14,12 @@
 
 int     *ft_rrange(int start, int end)
 {
-	int	len = (end - start) < 0 ? ~(end - start) + 1 : (end - start); 
-	int *ptr;
-	int index = 0;
+	int	len = (end >= start) ? end - start + 1 : start - end + 1; 
+	int	*ptr;
 
-	if (!(ptr = (int *)malloc(sizeof(int) * len + 1)))
+	if (!(ptr = (int *)malloc(sizeof(int) * len)))
 		return (NULL);	
-	while (end != start)
-		ptr[index++] =  (end > start) ? end-- :end++;
-	ptr[index] = start;
+	while (len--)
+		ptr[len] =  (end >= start) ? start++ : start--;
 	return (ptr);
 }
