@@ -12,18 +12,7 @@
 
 int	    is_power_of_2(unsigned int n)
 {
-	unsigned int num;
-
-	num = 2;
 	if (n <= 0)
 		return (0);
-	if (n == 1)
-		return (1);
-	while (num <= n)
-	{
-		if (num == n)
-			return (1);
-		num *= 2;
-	}
-	return (0);
+	return ((n & (n - 1)) == 0);
 }
