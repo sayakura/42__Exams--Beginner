@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_int_tab.c                                     :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/31 19:50:05 by exam              #+#    #+#             */
-/*   Updated: 2018/08/31 20:03:24 by exam             ###   ########.fr       */
+/*   Created: 2018/09/21 10:18:05 by exam              #+#    #+#             */
+/*   Updated: 2018/09/21 10:20:48 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_list.h"
 
-static inline int compare(int a, int b)
+void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	return (a > b) ? 1 : 0;
-}
+	t_list	*head = begin_list;
 
-static inline void swap(int *a, int *b)
-{
-	*a ^= *b;
-	*b ^= *a;
-	*a ^= *b;
-}
-
-void sort_int_tab(int *tab, unsigned int size)
-{
-	if (size == 0 || size == 1)
-		return ;
-	unsigned int index = 0;
-	while (index < size - 1)
+	while (head)
 	{
-		if (compare(tab[index], tab[index + 1]))
-		{
-			swap(&tab[index], &tab[index + 1]);
-			index = 0;
-		}
-		else
-		    index++;
+		(*f)(head->data);
+		head = head->next;
 	}
 }

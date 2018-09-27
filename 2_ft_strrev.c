@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_int_tab.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/31 19:50:05 by exam              #+#    #+#             */
-/*   Updated: 2018/08/31 20:03:24 by exam             ###   ########.fr       */
+/*   Created: 2018/09/21 09:16:28 by exam              #+#    #+#             */
+/*   Updated: 2018/09/21 09:27:33 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-static inline int compare(int a, int b)
+int		ft_strlen(char *str)
 {
-	return (a > b) ? 1 : 0;
+	int 	index;
+
+	index = 0;
+	while (str[index])
+		index++;
+	return (index);
 }
 
-static inline void swap(int *a, int *b)
+char    *ft_strrev(char *str)
 {
-	*a ^= *b;
-	*b ^= *a;
-	*a ^= *b;
-}
-
-void sort_int_tab(int *tab, unsigned int size)
-{
-	if (size == 0 || size == 1)
-		return ;
-	unsigned int index = 0;
-	while (index < size - 1)
+	int	len = 0;
+	
+	len = ft_strlen(str);
+	if (len == 0 || len == 1)
+	   return (str);
+	int index = 0;
+	char temp;
+	while (index < len / 2)	
 	{
-		if (compare(tab[index], tab[index + 1]))
-		{
-			swap(&tab[index], &tab[index + 1]);
-			index = 0;
-		}
-		else
-		    index++;
+		temp = str[index];
+		str[index] = str[len - (index + 1)];
+		str[len - (index + 1)] = temp;
+		index++;
 	}
+	return (str);
 }

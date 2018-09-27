@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 09:07:57 by exam              #+#    #+#             */
-/*   Updated: 2018/09/21 09:13:10 by exam             ###   ########.fr       */
+/*   Created: 2018/09/21 09:02:09 by exam              #+#    #+#             */
+/*   Updated: 2018/09/21 09:05:41 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void	pc(char c)
+void	pc(char c )
 {
 	write(1, &c, 1);
 }
-int		main(int ac, char **av)
-{
-	int index;
 
-	index = 0;
+int	main(int ac, char **av)
+{
 	if (ac != 2)
 	{
+		pc('a');
 		pc('\n');
-		return (0);
+		return (0);	
 	}
 	else
 	{
-		while (av[1][index])
+		while (*av[1])
 		{
-			if (av[1][index] == 'z')
+			if (*av[1] == 'a')
+			{
 				pc('a');
-			else if (av[1][index] == 'Z')
-				pc('A');
-			else if ((av[1][index] >= 'a' && av[1][index] < 'z')
-					|| (av[1][index] >= 'A' && av[1][index] < 'Z'))
-				pc(av[1][index] + 1);
-			else
-				pc(av[1][index]);
-			index++;
+				pc('\n');
+				return (0);
+			}
+			av[1]++;
 		}
 		pc('\n');
 	}
