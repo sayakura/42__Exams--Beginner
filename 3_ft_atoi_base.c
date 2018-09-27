@@ -6,11 +6,11 @@
 /*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 01:00:49 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/14 01:30:36 by qpeng            ###   ########.fr       */
+/*   Updated: 2018/09/26 21:40:46 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	valid_convert(char c, int base)
+static inline int 	valid_convert(char c, int base)
 {
 	char	*char_base = "0123456789abcdef";
 	int		index = 0;
@@ -26,23 +26,29 @@ int	valid_convert(char c, int base)
 	return (-1);
 }
 
-int	ft_atoi_base(const char *str, int str_base)
+int			ft_atoi_base(const char *str, int str_base)
 {
-	int		num = 0;
-	int		index = 0;
-	int		sign = 1;
+	unsigned long long	num = 0;
+	int					index = 0;
+	int					sign = 1;
 
-	if (str_base > 16 || str_base <= 1)
+	if (str_base > 16 || str_base < 2)
 		return (0);
 	if (str[index] == '-')
 	{
-		sign = -1;
+		sign = 0;
 		index++;
 	}
 	while (valid_convert(str[index], str_base) != -1)
 	{
 		num = num * str_base + (valid_convert(str[index], str_base));
+		if (num > 9223372036854775807)
+			return (-1);
 		index++;
 	}
-	return (num * sign);
+	return (int)((sign) ? (num) : (-num));
 }
+/* 
+the real atoi will return -1 when a the input represents
+a number that is greater than max of long long (2 ^ 63 - 1).
+*/

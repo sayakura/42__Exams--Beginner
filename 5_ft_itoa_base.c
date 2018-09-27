@@ -14,30 +14,26 @@
 
 char *g_base = "0123456789ABCDEF";
 
-char 	convert(int value)
+char convert(int num)
 {
-	if (value < 0)
-		return g_base[-value];
-	else
-		return g_base[value];
+	return (num < 0) ? (g_base[-num]) : (g_base[num]);
 }
 
 char	*ft_itoa_base(int value, int base)
 {
-	if (base <= 1 || base > 16)
-		return (char *)(0);
-	int negative = (value < 0) ? 1 : 0;
-	int size = 2 + ((base == 10) ? negative : 0);
-	char *res;
+	if (base < 2 || base > 16)
+		return (NULL);
+	int negative = (base == 10 && value < 0) ? 1 : 0;
+	int size = (negative) ? 3 : 2;
 	int temp = value;
-	while ((temp /= base) != 0 )
+	while (temp /= base)
 		size++;
-	res = malloc(size * sizeof(char));
+	char *res = malloc(sizeof(char) * size);
 	res[--size] = '\0';
 	res[--size] = convert(value % base);
-	while((value /= base) != 0)
+	while (value /= base)
 		res[--size] = convert(value % base);
- 	if (negative && base == 10)
-		res[--size]  = '-';
+	if (negative == 1)
+		res[--size] = '-';
 	return res;
 }

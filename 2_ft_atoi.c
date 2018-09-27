@@ -6,37 +6,49 @@
 /*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 00:51:29 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/14 00:58:25 by qpeng            ###   ########.fr       */
+/*   Updated: 2018/09/26 21:45:34 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
+static inline int	ft_isdigit(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\r' ||
-			c == '\f' || c == '\t' || c == '\n' || c == '\v') ?
-			1 : 0;
+	return (c >= '0' && c <= '9');
 }
-int	ft_atoi(const char *str)
-{
-	int num;
-	int index;
-	int sign;
 
-	sign = 1;
+static inline int	ft_isspace(char c)
+{
+	return (c == ' ' ||
+			c == '\t' ||
+			c == '\n' ||
+			c == '\f' ||
+			c == '\v' ||
+			c == '\r' ||
+			c == '\t');
+}
+
+int					ft_atoi(const char *str)
+{
+	unsigned long long	result;
+	unsigned int		index;
+	char				sign;
+
 	index = 0;
-	num = 0;
+	result = 0;
+	sign = 1;
 	while (ft_isspace(str[index]))
 		index++;
 	if (str[index] == '+' || str[index] == '-')
 	{
 		if (str[index] == '-')
-			sign = -1;
+			sign = 0;
 		index++;
 	}
-	while (str[index] >= '0' && str[index] <= '9')
+	while (ft_isdigit(str[index]))
 	{
-		num = num * 10 + (str[index] - '0');
+		result = result * 10 + (str[index] - '0');
+		if (result > 9223372036854775807)
+			return (-1);
 		index++;
 	}
-	return (num * sign);
+	return (int)((sign) ? (result) : (-result));
 }
