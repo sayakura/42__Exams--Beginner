@@ -11,29 +11,23 @@
 /* ************************************************************************** */
 int		ft_strlen(char *str)
 {
-	int 	index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
+	int	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
 char    *ft_strrev(char *str)
 {
-	int	len = 0;
-	
-	len = ft_strlen(str);
-	if (len == 0 || len == 1)
-	   return (str);
-	int index = 0;
+	int	end = 0;
+	int start = 0;
 	char temp;
-	while (index < len / 2)	
+
+	end = ft_strlen(str) - 1;
+	while (start < end)
 	{
-		temp = str[index];
-		str[index] = str[len - (index + 1)];
-		str[len - (index + 1)] = temp;
-		index++;
+		temp = str[start];
+		str[start++] = str[end];
+		str[end--] = temp;
 	}
-	return (str);
 }
