@@ -60,7 +60,7 @@ void	ph(unsigned char c)
 	pc(g_base[c % 16]);
 }
 
-void	print_line(unsigned char *tab, size_t beg, size_t max)
+void	pl(unsigned char *tab, size_t beg, size_t max)
 {
 	size_t	i;
 	size_t	end = beg + 16;
@@ -87,7 +87,7 @@ void	print_memory(const void *addr, size_t size)
 
 	tab = (unsigned char *)addr;
 	for (size_t c = 0; c < size; c += 16)
-		print_line(tab, c, size);
+		pl(tab, c, size);
 }
 /*------------------------------------------------------------------------------
 #include <stdio.h>
