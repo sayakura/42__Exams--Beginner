@@ -5,44 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 10:06:44 by exam              #+#    #+#             */
-/*   Updated: 2018/09/21 10:15:19 by exam             ###   ########.fr       */
+/*   Created: 2018/10/02 09:17:04 by exam              #+#    #+#             */
+/*   Updated: 2018/10/02 09:23:30 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+
+void	pc(char c)
+{
+	write(1, &c, 1);
+}
 
 int	main(int ac, char **av)
 {
 	if (ac != 3)
 	{
-		printf("\n");
+		pc('\n');
 		return (0);
 	}
-	else 
+	else
 	{
-		int num1 = atoi(av[1]);
-		int num2 = atoi(av[2]);
-		int small = (num1 < num2) ? num1 : num2;
-		if (num1 == num2)
+		int a = atoi(av[1]);
+		int b = atoi(av[2]);
+		if (a == 0 || b == 0)
 		{
-			printf("%d\n", num1);
+			printf("0\n");
 			return (0);
 		}
-		if (small == 0)
+		int small, big, temp;
+		if (a < b)
 		{
-			printf("%d\n", 0);
-			return (0);
+			small = a;
+			big = b;
 		}
-		while (small != 0)
+		else
 		{
-			if (num1 % small == 0 && num2 % small == 0)
+			small = b;
+			big = a;
+		}
+		temp = small;
+		while (temp != 0)
+		{
+			if (big % temp == 0 && (small % temp == 0))
 			{
-				printf("%d\n",small);
-				return (0);
+				printf("%d\n", temp);
+				break ;
 			}
-			small--;
+			temp--;
 		}
 	}
 	return (0);
