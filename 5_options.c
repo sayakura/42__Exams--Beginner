@@ -76,7 +76,7 @@ int		main(int ac, char **av)
 			}
 			i++;
 		}
-		print_bin(g_mem);
+		print_bin(g_mem); 
 	}
 	return (0);
 }
