@@ -50,8 +50,10 @@ void	pc(char c)
 
 void	pa(unsigned char c)
 {
-	if (c > 31 && c < 127)	pc(c);
-	else 					pc('.');
+	if (c > 31 && c < 127)
+		pc(c);
+	else
+		pc('.');
 }
 
 void	ph(unsigned char c)
