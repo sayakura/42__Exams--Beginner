@@ -6,7 +6,7 @@
 /*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 00:51:29 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/26 21:45:34 by qpeng            ###   ########.fr       */
+/*   Updated: 2018/10/02 01:42:44 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,18 @@ int					ft_atoi(const char *str)
 	}
 	return (int)((sign) ? (result) : (-result));
 }
+/*------------------------------------------------------------------------------
+Assignment name  : ft_atoi
+Expected files   : ft_atoi.c
+Allowed functions: None
+--------------------------------------------------------------------------------
+
+Write a function that converts the string argument str to an integer (type int)
+and returns it.
+
+It works much like the standard atoi(const char *str) function, see the man.
+
+Your function must be declared as follows:
+
+int	ft_atoi(const char *str);
+------------------------------------------------------------------------------*/
