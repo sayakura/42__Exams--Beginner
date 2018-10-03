@@ -19,30 +19,32 @@ void  flood_fill(char **tab, t_point size, t_point begin)
 	t_point temp;
 	
 	if (tab[begin.x][begin.y] == '0')
+	{
 		tab[begin.x][begin.y] = 'F';
-	if (tab[begin.x][begin.y + 1] == '0')
-	{
-		temp.x = begin.x;
-		temp.y = begin.y + 1;
-		flood_fill(tab, size, temp);
-	}
-	if (tab[begin.x + 1][begin.y] == '0')
-	{
-		temp.x = begin.x + 1;
-		temp.y = begin.y;
-		flood_fill(tab, size, temp);
-	}
-	if (tab[begin.x - 1][begin.y] == '0')
-	{
-		temp.x = begin.x - 1;
-		temp.y = begin.y;
-		flood_fill(tab, size, temp);
-	}
-	if (tab[begin.x][begin.y - 1] == '0')
-	{
-		temp.x = begin.x;
-		temp.y = begin.y - 1;
-		flood_fill(tab, size, temp);
+		if (tab[begin.x][begin.y + 1] == '0')
+		{
+			temp.x = begin.x;
+			temp.y = begin.y + 1;
+			flood_fill(tab, size, temp);
+		}
+		if (tab[begin.x + 1][begin.y] == '0')
+		{
+			temp.x = begin.x + 1;
+			temp.y = begin.y;
+			flood_fill(tab, size, temp);
+		}
+		if (tab[begin.x - 1][begin.y] == '0')
+		{
+			temp.x = begin.x - 1;
+			temp.y = begin.y;
+			flood_fill(tab, size, temp);
+		}
+		if (tab[begin.x][begin.y - 1] == '0')
+		{
+			temp.x = begin.x;
+			temp.y = begin.y - 1;
+			flood_fill(tab, size, temp);
+		}
 	}
 }
 /*------------------------------------------------------------------------------

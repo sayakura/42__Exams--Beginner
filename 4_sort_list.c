@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   sort_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/21 09:16:28 by exam              #+#    #+#             */
-/*   Updated: 2018/09/21 09:27:33 by exam             ###   ########.fr       */
+/*   Created: 2018/10/02 09:47:54 by exam              #+#    #+#             */
+/*   Updated: 2018/10/02 10:03:01 by exam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int		ft_strlen(char *str)
-{
-	int	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
 
-char    *ft_strrev(char *str)
+#include "list.h"
+#include <stdlib.h>
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 {
-	int	end = 0;
-	int start = 0;
-	char temp;
-
-	end = ft_strlen(str) - 1;
-	while (start < end)
+	t_list *head = lst;
+	int temp;
+	
+	if (!head)
+		return (NULL);
+	while (head && head->next)
 	{
-		temp = str[start];
-		str[start++] = str[end];
-		str[end--] = temp;
+		if (cmp(head->data, head->next->data) == 0)
+		{
+			temp = head->next->data;
+			head->next->data = head->data;
+			head->data = temp;
+			head = lst;
+		}
+		else
+			head = head->next;
 	}
+	return (lst);
 }
