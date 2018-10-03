@@ -6,7 +6,7 @@
 /*   By: kpeng <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/02 00:01:12 by kpeng             #+#    #+#             */
-/*   Updated: 2018/10/02 00:59:17 by qpeng            ###   ########.fr       */
+/*   Updated: 2018/10/02 22:52:14 by qpeng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -92,7 +92,7 @@ int		main(int ac, char **av)
 				push(num1 * num2);
 			else if (c == '/' && num1 != 0)
 				push(num2 / num1);
-			else if (c == '%')
+			else if (c == '%' && num1 != 0)
 				push(num2 % num1);
 			i++;
 			while (av[1][i] && is_spc(av[1][i]))
