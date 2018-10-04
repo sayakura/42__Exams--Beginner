@@ -42,8 +42,11 @@ int			ft_atoi_base(const char *str, int str_base)
 	while (valid_convert(str[index], str_base) != -1)
 	{
 		num = num * str_base + (valid_convert(str[index], str_base));
-		if (num > 9223372036854775807)
-			return (-1);
+		if (result > 9223372036854775807)
+			if (sign)
+				return (-1);
+			else
+				return (0);
 		index++;
 	}
 	return (int)((sign) ? (num) : (-num));

@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static inline int	ft_isdigit(char c)
+int		ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-static inline int	ft_isspace(char c)
+int 	ft_isspace(char c)
 {
 	return (c == ' ' ||
 			c == '\t' ||
@@ -26,7 +26,7 @@ static inline int	ft_isspace(char c)
 			c == '\t');
 }
 
-int					ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	unsigned long long	result;
 	unsigned int		index;
@@ -47,7 +47,10 @@ int					ft_atoi(const char *str)
 	{
 		result = result * 10 + (str[index] - '0');
 		if (result > 9223372036854775807)
-			return (-1);
+			if (sign)
+				return (-1);
+			else
+				return (0);
 		index++;
 	}
 	return (int)((sign) ? (result) : (-result));
