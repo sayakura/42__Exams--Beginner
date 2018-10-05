@@ -1,14 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/31 20:36:26 by exam              #+#    #+#             */
-/*   Updated: 2018/08/31 20:50:31 by exam             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* ***************************************************************************
+ * Author  : Kura Peng (kpeng) <https://github.com/sayakura>
+ * Created : 2018/10/05
+ * Updated : 2018/10/05
+ * ***************************************************************************/
 
 #include <stdlib.h>
 
@@ -31,3 +25,25 @@ char	*ft_itoa_base(int value, int base)
 		res[--size] = '-';
 	return res;
 }
+/* ***************************************************************************
+Assignment name  : ft_itoa_base
+Expected files   : ft_itoa_base.c
+Allowed functions: malloc
+--------------------------------------------------------------------------------
+
+Write a function that converts an integer value to a null-terminated string
+using the specified base and stores the result in a char array that you must
+allocate.
+
+The base is expressed as an integer, from 2 to 16. The characters comprising
+the base are the digits from 0 to 9, followed by uppercase letter from A to F.
+
+For example, base 4 would be "0123" and base 16 "0123456789ABCDEF".
+
+If base is 10 and value is negative, the resulting string is preceded with a
+minus sign (-). With any other base, value is always considered unsigned.
+
+Your function must be declared as follows:
+
+char	*ft_itoa_base(int value, int base);
+ * ***************************************************************************/

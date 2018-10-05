@@ -1,14 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   aff_first_param.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qpeng <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/14 03:07:02 by qpeng             #+#    #+#             */
-/*   Updated: 2018/09/14 03:08:07 by qpeng            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/* ***************************************************************************
+ * Author  : Kura Peng (kpeng) <https://github.com/sayakura>
+ * Created : 2018/10/05
+ * Updated : 2018/10/05
+ * ***************************************************************************/
 
 #include <unistd.h>
 
@@ -35,3 +29,23 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+/* ***************************************************************************
+Assignment name  : aff_first_param
+Expected files   : aff_first_param.c
+Allowed functions: write
+--------------------------------------------------------------------------------
+
+Write a program that takes strings as arguments, and displays its first
+argument followed by a \n.
+
+If the number of arguments is less than 1, the program displays \n.
+
+Example:
+
+$> ./aff_first_param vincent mit "l'ane" dans un pre et "s'en" vint | cat -e
+vincent$
+$> ./aff_first_param "j'aime le fromage de chevre" | cat -e
+j'aime le fromage de chevre$
+$> ./aff_first_param
+$
+ * ***************************************************************************/
