@@ -1,70 +1,62 @@
-/* ***************************************************************************
- * Author  : Kura Peng (kpeng) <https://github.com/sayakura>
- * Created : 2018/10/05
- * Updated : 2018/10/05
- * ***************************************************************************/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/09 09:13:29 by exam              #+#    #+#             */
+/*   Updated: 2018/10/09 09:30:29 by exam             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <unistd.h>
+
+char	stack[1256];
+int		pointer = -1;
+
+void 	pc(char c)
+{
+	write(1, &c, 1);
+}
 
 int		main(int ac, char **av)
 {
 	if (ac != 3)
 	{
-		write(1, "\n", 1);
+		pc('\n');
 		return (0);
 	}
 	else
 	{
-		int temp = 0, j = 0, pointer = 0;
-		char c;
-		char stack[256];
+		int j = 0;
+		int temp = 0;
+		char c = 0;
 		for (int i = 0; av[1][i]; i++)
 		{
 			c = av[1][i];
+			if (!av[2][j])
+			{
+				pc('\n');
+                return (0);
+			}
 			for (j = temp; av[2][j]; j++)
+			{
 				if (av[2][j] == c)
 				{
+					stack[++pointer] = av[2][j++];
 					temp = j;
 					break ;
-				}
-			if (temp != j)
+				}	
+			}
+			if (j != temp)
 			{
-				write(1, "\n", 1);
+				pc('\n');
 				return (0);
 			}
-			else
-				stack[pointer++] = av[2][temp];
 		}
-		write(1, stack, pointer);
-		write(1, "\n", 1);
+		write(1, stack, pointer + 1);
+		pc('\n');
 	}
 	return (0);
 }
-/*------------------------------------------------------------------------------
-Assignment name  : wdmatch
-Expected files   : wdmatch.c
-Allowed functions: write
---------------------------------------------------------------------------------
-
-Write a program that takes two strings and checks whether it's possible to
-write the first string with characters from the second string, while respecting
-the order in which these characters appear in the second string.
-
-If it's possible, the program displays the string, followed by a \n, otherwise
-it simply displays a \n.
-
-If the number of arguments is not 2, the program displays a \n.
-
-Examples:
-
-$>./wdmatch "faya" "fgvvfdxcacpolhyghbreda" | cat -e
-faya$
-$>./wdmatch "faya" "fgvvfdxcacpolhyghbred" | cat -e
-$
-$>./wdmatch "forty two" "qfqfsoudf arzgrsayns tsryegftdgs sjytwdekuooixq " | cat -e
-forty two$
-$>./wdmatch "error" rrerrrfiiljdfxjyuifrrvcoojh | cat -e
-$
-$>./wdmatch | cat -e
-$
-------------------------------------------------------------------------------*/
