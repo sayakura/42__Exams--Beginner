@@ -60,19 +60,19 @@ t_op *doop(char op)
 	int num1;
 	int num2;
 	if (!isemp())
-       num1 = pop();
-    else
-    {
+		num1 = pop();
+	else
+	{
 		res->status = 0;
-    	return (res);
+		return (res);
 	}	
 	if (!isemp())
-       num2 = pop();
+		num2 = pop();
 	else 
 	{
-        res->status = 0;
-        return (res);
-    }
+		res->status = 0;
+		return (res);
+	}
 
 	if (op == '+')
 		res->ans = num1 + num2;
@@ -104,7 +104,7 @@ int calc(char *equ)
 	while(equ[i])
 	{
 		while (isspc(equ[i]))
-            i++;
+			i++;
 		if (isop(equ[i]) && (!equ[i + 1] || isspc(equ[i + 1])))
 		{
 			res = doop(equ[i]);
