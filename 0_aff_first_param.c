@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 		while (*av[1])
 		{
 			ft_putchar(*av[1]);
-			(av[1])++;
+			av[1]++;
 		}
 		ft_putchar('\n');
 	}

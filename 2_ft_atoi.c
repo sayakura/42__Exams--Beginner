@@ -12,7 +12,6 @@ int		ft_isdigit(char c)
 int 	ft_isspace(char c)
 {
 	return (c == ' ' ||
-			c == '\t' ||
 			c == '\n' ||
 			c == '\f' ||
 			c == '\v' ||
