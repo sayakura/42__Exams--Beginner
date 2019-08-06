@@ -3,10 +3,9 @@
  * Created : 2018/10/05
  * Updated : 2018/10/05
  * ***************************************************************************/
-
 #include <unistd.h>
 
-void	pc(char c )
+void	putchar(char c )
 {
 	write(1, &c, 1);
 }
@@ -14,27 +13,23 @@ void	pc(char c )
 int	main(int ac, char **av)
 {
 	if (ac != 2)
-	{
-		pc('a');
-		pc('\n');
-		return (0);	
-	}
+		putchar('a');
 	else
 	{
 		while (*av[1])
 		{
 			if (*av[1] == 'a')
 			{
-				pc('a');
-				pc('\n');
-				return (0);
+				putchar('a');
+                		break ;
 			}
 			av[1]++;
 		}
-		pc('\n');
 	}
+    	putchar('\n');
 	return (0);
 }
+
 /* ***************************************************************************
 Assignment name  : aff_a
 Expected files   : aff_a.c
