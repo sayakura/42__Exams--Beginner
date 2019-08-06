@@ -39,11 +39,11 @@ int		ft_atoi(const char *str)
 	while (ft_isdigit(str[index]))
 	{
 		result = result * 10 + (str[index] - '0');
-		if (result > 9223372036854775807)
-			if (sign)
-				return (-1);
-			else
-				return (0);
+// 		if (result > 9223372036854775807)
+// 			if (sign)
+// 				return (-1);
+// 			else
+// 				return (0);
 		index++;
 	}
 	return (int)((sign) ? (result) : (-result));
