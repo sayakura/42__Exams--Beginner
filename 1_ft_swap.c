@@ -13,6 +13,26 @@ void	ft_swap(int *a, int *b)
 		*a ^= *b;
 	}
 }
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+	
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	x;
+	int	y;
+
+	x = *a;
+	y = *b;
+	*b = x;
+	*a = y;
+}
 /*------------------------------------------------------------------------------
 Assignment name  : ft_swap
 Expected files   : ft_swap.c
