@@ -9,7 +9,20 @@
 void	ft_print_numbers(void)
 {
 	write(1, "0123456789",10);
+}
 
+void	ft_print_numbers(void)
+{
+	int	num;
+	
+	num = '0';
+	while (num <= '9') 
+	{
+		write(1, &num,1);
+		num++;
+    	}
+	num = '\n';
+	write(1, &num, 1);
 }
 /*-------------------------------------------------------------------------------
 Assignment name  : ft_print_numbers
