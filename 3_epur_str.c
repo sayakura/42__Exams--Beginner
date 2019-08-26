@@ -36,7 +36,7 @@ int 	main(int ac, char **av)
 				ft_putchar(av[1][index++]);
 			while (is_space(av[1][index]))
 				index++;
-			if (av[1][index] && av[1][++index])
+			if (av[1][index] && av[1][index + 1])
 				ft_putchar(' ');
 		}
 		ft_putchar('\n');
