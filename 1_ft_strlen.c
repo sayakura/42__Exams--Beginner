@@ -2,25 +2,43 @@
  * Author  : Kura Peng (kpeng) <https://github.com/sayakura>
  * Created : 2018/10/05
  * Updated : 2018/10/05
+ * 
+ * Assignment name  : ft_strlen
+Expected files   : ft_strlen.c
+Allowed functions: 
+--------------------------------------------------------------------------------
+
+Write a function that returns the length of a string.
+
+Your function must be declared as follows:
+
+int	ft_strlen(char *str);
  * ***************************************************************************/
-unsigned int ft_strlen(const char *s) {
+int ft_strlen(const char *s)
+{
     unsigned int len = 0;
-    while(1) {
-        unsigned x = *(unsigned*)s;
-        if((x & 0xFF) == 0) return len;
-        if((x & 0xFF00) == 0) return len + 1;
-        if((x & 0xFF0000) == 0) return len + 2;
-        if((x & 0xFF000000) == 0) return len + 3;
+    while (1)
+    {
+        unsigned x = *(unsigned *)s;
+        if ((x & 0xFF) == 0)
+            return len;
+        if ((x & 0xFF00) == 0)
+            return len + 1;
+        if ((x & 0xFF0000) == 0)
+            return len + 2;
+        if ((x & 0xFF000000) == 0)
+            return len + 3;
         s += 4, len += 4;
     }
+    return len;
 }
 
-int	ft_strlen(char *str)
+int ft_strlen(char *str)
 {
-	int len;
+    int len;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+    len = 0;
+    while (str[len])
+        len++;
+    return (len);
 }
